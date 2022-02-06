@@ -1,1 +1,1 @@
-# Studies with sql initiliazing
+# Studies initiliazing
