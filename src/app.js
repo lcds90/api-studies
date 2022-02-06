@@ -12,3 +12,5 @@ app.use('/user', userController);
 app.use('/store', storeController)
 
 app.listen(PORT, () => console.log(`Ouvindo na porta ${PORT}!`));
+
+module.exports = app;
