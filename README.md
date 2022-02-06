@@ -1,0 +1,1 @@
+# Studies with sql initiliazing
