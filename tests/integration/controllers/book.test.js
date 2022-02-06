@@ -7,11 +7,11 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 const app = require('../../../src/app');
-const { Store } = require('../../../src/models');
+const { Book } = require('../../../src/models');
 
-describe('Busca todos as lojas', () => {
-  describe('quando não existe nenhuma loja cadastrado', () => {
-    const findAllStub = stub(Store, 'findAll');
+describe('Busca todos os livros', () => {
+  describe('quando não existe nenhum livro cadastrado', () => {
+    const findAllStub = stub(Book, 'findAll');
 
     before(() => {
       findAllStub.resolves([]);
@@ -21,30 +21,30 @@ describe('Busca todos as lojas', () => {
       findAllStub.restore();
     });
 
-    it('called Store.findAll', async () => {
+    it('called Book.findAll', async () => {
       await chai.request(app)
-        .get('/store');
+        .get('/book');
 
-      expect(Store.findAll.calledOnce).to.be.equals(true);
+      expect(Book.findAll.calledOnce).to.be.equals(true);
     });
 
     it('o status é 200', async () => {
       const result = await chai.request(app)
-        .get('/store');
+        .get('/book');
 
       expect(result.status).to.be.equals(200);
     });
 
     it('a resposta é um array', async () => {
       const result = await chai.request(app)
-        .get('/store');
+        .get('/book');
 
       expect(result.body).to.be.an('array');
     });
 
     it('o array está vazio', async () => {
       const result = await chai.request(app)
-        .get('/store');
+        .get('/book');
 
       expect(result.body).to.be.empty;
     });
